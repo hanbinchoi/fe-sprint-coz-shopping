@@ -3,6 +3,7 @@ import logo from "../img/로고.png";
 import { BiMenu } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const Container = styled.div`
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
