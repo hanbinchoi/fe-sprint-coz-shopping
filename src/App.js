@@ -1,5 +1,15 @@
+import { useState } from "react";
+import Header from "./components/Header";
 function App() {
-  return <></>;
+  const [isDropdownView, setDropDownView] = useState(false);
+  return (
+    <>
+      <Header
+        isDropdownView={isDropdownView}
+        setDropDownView={setDropDownView}
+      ></Header>
+    </>
+  );
 }
 
 export default App;
