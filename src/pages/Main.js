@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import Product from "../components/Product";
 
 const Container = styled.div`
-  padding: 104px 76px 88px;
+  padding: 24px 76px;
   height: 640px;
   div {
     size: 24px;
@@ -14,6 +14,7 @@ const Container = styled.div`
 const ItemContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 24px;
 `;
 
 function Main() {
