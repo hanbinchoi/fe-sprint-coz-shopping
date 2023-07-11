@@ -5,10 +5,18 @@ import Main from "./pages/Main";
 import ProductList from "./pages/ProductList";
 import Bookmark from "./pages/Bookmark";
 import Footer from "./components/Footer";
+import { styled } from "styled-components";
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100vh;
+`;
+
 function App() {
   const [isDropdownView, setDropDownView] = useState(false);
   return (
-    <>
+    <Container>
       <BrowserRouter>
         <Header
           isDropdownView={isDropdownView}
@@ -21,7 +29,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </Container>
   );
 }
 

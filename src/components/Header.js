@@ -3,6 +3,7 @@ import logo from "../img/로고.png";
 import { BiMenu } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const Container = styled.div`
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +12,7 @@ const Container = styled.div`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  padding: 25px 76px;
+  padding: 0 76px;
   gap: 12px;
   span {
     color: #000000;
@@ -20,7 +21,7 @@ const Logo = styled.div`
   }
 `;
 const Menu = styled.div`
-  padding: 30px 78px;
+  padding: 0 78px;
   font-size: 3rem;
 `;
 const DropDownMenu = styled.ul`
