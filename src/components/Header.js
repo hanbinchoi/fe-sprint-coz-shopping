@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import logo from "../img/로고.png";
 import { BiMenu } from "react-icons/bi";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -13,6 +14,7 @@ const Logo = styled.div`
   padding: 25px 76px;
   gap: 12px;
   span {
+    color: #000000;
     font-weight: bold;
     font-size: 32px;
   }
@@ -36,6 +38,7 @@ const DropDownMenu = styled.ul`
     justify-content: center;
     font-size: 16px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: #000000;
   }
 
   li:last-child {
@@ -52,17 +55,24 @@ function Header({ isDropdownView, setDropDownView }) {
   };
   return (
     <Container onClick={handleClickContainer}>
-      <Logo>
-        <img src={logo} alt="로고" />
-        <span>COZ Shopping</span>
-      </Logo>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Logo>
+          <img src={logo} alt="로고" />
+          <span>COZ Shopping</span>
+        </Logo>
+      </Link>
+
       <Menu>
         <BiMenu onClick={handleClickContainer} />
         {isDropdownView ? (
           <DropDownMenu>
             <li>최한빈님, 안녕하세요!</li>
-            <li>상품리스트 페이지</li>
-            <li>북마크 페이지</li>
+            <Link to="/products/list" style={{ textDecoration: "none" }}>
+              <li>상품리스트 페이지</li>
+            </Link>
+            <Link to="/bookmark" style={{ textDecoration: "none" }}>
+              <li>북마크 페이지</li>
+            </Link>
           </DropDownMenu>
         ) : null}
       </Menu>
