@@ -8,11 +8,11 @@ function App() {
   const [isDropdownView, setDropDownView] = useState(false);
   return (
     <>
-      <Header
-        isDropdownView={isDropdownView}
-        setDropDownView={setDropDownView}
-      ></Header>
       <BrowserRouter>
+        <Header
+          isDropdownView={isDropdownView}
+          setDropDownView={setDropDownView}
+        ></Header>
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/products/list" element={<ProductList />}></Route>

@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import logo from "../img/로고.png";
 import { BiMenu } from "react-icons/bi";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -13,6 +14,7 @@ const Logo = styled.div`
   padding: 25px 76px;
   gap: 12px;
   span {
+    color: #000000;
     font-weight: bold;
     font-size: 32px;
   }
@@ -52,10 +54,13 @@ function Header({ isDropdownView, setDropDownView }) {
   };
   return (
     <Container onClick={handleClickContainer}>
-      <Logo>
-        <img src={logo} alt="로고" />
-        <span>COZ Shopping</span>
-      </Logo>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Logo>
+          <img src={logo} alt="로고" />
+          <span>COZ Shopping</span>
+        </Logo>
+      </Link>
+
       <Menu>
         <BiMenu onClick={handleClickContainer} />
         {isDropdownView ? (
