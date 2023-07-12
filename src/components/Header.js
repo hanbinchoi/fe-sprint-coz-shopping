@@ -26,8 +26,8 @@ const Menu = styled.div`
 `;
 const DropDownMenu = styled.ul`
   position: absolute;
-  right: 20px;
-  top: 100px;
+  right: 50px;
+  top: 70px;
   background: #ffffff;
   border-radius: 10px;
   font-size: 16px;
@@ -45,7 +45,7 @@ const DropDownMenu = styled.ul`
     width: 0;
     z-index: 1;
     top: -20px;
-    left: 100px;
+    right: 35px;
   }
 
   &:before {
@@ -58,7 +58,7 @@ const DropDownMenu = styled.ul`
     width: 0;
     z-index: 0;
     top: -20px;
-    left: 100px;
+    right: 35px;
   }
 
   li {
