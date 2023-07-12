@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import Star from "./Star";
+import { useRecoilState } from "recoil";
+import { bookmarkState } from "./atoms";
 
 const Container = styled.div`
   width: 264px;
@@ -38,11 +40,23 @@ const DescContainer = styled.div`
 `;
 
 function Product({ product }) {
+  const [bookmark, setBookmark] = useRecoilState(bookmarkState);
+  const handleBookmarkClick = (id) => {
+    if (bookmark.find((ele) => ele === id))
+      setBookmark(bookmark.filter((ele) => ele !== id));
+    else setBookmark((prev) => [...prev, id]);
+  };
   return (
     <Container>
       <ImageContainer>
         <img src={product.image_url} alt={product.title} />
-        <Star />
+        <div onClick={() => handleBookmarkClick(product.id)}>
+          {bookmark.find((ele) => ele === product.id) ? (
+            <Star bookmark />
+          ) : (
+            <Star />
+          )}
+        </div>
       </ImageContainer>
       <DescContainer>
         <span>{product.title}</span>

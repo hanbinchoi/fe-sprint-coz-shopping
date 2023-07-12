@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 import axios from "axios";
 import { useRecoilState } from "recoil";
 import { data } from "./components/atoms";
-import Star from "./components/Star";
 
 function App() {
   const [isDropdownView, setDropDownView] = useState(false);

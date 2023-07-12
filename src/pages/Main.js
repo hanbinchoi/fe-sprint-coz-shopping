@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Product from "../components/Product";
 import { useRecoilValue } from "recoil";
-import { data } from "../components/atoms";
+import { bookmarkState, data } from "../components/atoms";
 import Brand from "../components/Brand";
 import Exhibition from "../components/Exhibition";
 import Category from "../components/Category";
@@ -24,6 +24,8 @@ const ItemContainer = styled.div`
 
 function Main() {
   const item = useRecoilValue(data);
+  const bookmark = useRecoilValue(bookmarkState);
+  const bookmarkItem = item.filter((ele) => bookmark.includes(ele.id));
   return (
     <Container>
       <ListTitle>상품 리스트</ListTitle>
@@ -44,7 +46,7 @@ function Main() {
       </ItemContainer>
       <ListTitle>북마크 리스트</ListTitle>
       <ItemContainer>
-        {item
+        {bookmarkItem
           .slice(0, 4)
           .map((ele) =>
             ele.type === "Product" ? (
