@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Product from "../components/Product";
 import { useRecoilValue } from "recoil";
-import { item } from "../components/atoms";
+import { data } from "../components/atoms";
 import Brand from "../components/Brand";
 import Exhibition from "../components/Exhibition";
 import Category from "../components/Category";
@@ -23,11 +23,12 @@ const ItemContainer = styled.div`
 `;
 
 function Main() {
+  const item = useRecoilValue(data);
   return (
     <Container>
       <div>상품 리스트</div>
       <ItemContainer>
-        {products
+        {item
           .slice(0, 4)
           .map((ele) =>
             ele.type === "Product" ? (
@@ -43,7 +44,7 @@ function Main() {
       </ItemContainer>
       <ListTitle>북마크 리스트</ListTitle>
       <ItemContainer>
-        {products
+        {item
           .slice(0, 4)
           .map((ele) =>
             ele.type === "Product" ? (

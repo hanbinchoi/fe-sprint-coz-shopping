@@ -7,11 +7,11 @@ import Bookmark from "./pages/Bookmark";
 import Footer from "./components/Footer";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { item } from "./components/atoms";
+import { data } from "./components/atoms";
 
 function App() {
   const [isDropdownView, setDropDownView] = useState(false);
-  const [products, setProducts] = useRecoilState(item);
+  const [products, setProducts] = useRecoilState(data);
 
   useEffect(() => {
     axios

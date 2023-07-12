@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 
-export const item = atom({
+export const data = atom({
   key: "product",
   default: [],
 });
