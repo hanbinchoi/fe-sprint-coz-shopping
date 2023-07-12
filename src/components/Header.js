@@ -26,11 +26,41 @@ const Menu = styled.div`
 `;
 const DropDownMenu = styled.ul`
   position: absolute;
-  right: 50px;
+  right: 20px;
+  top: 100px;
+  background: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
   width: 200px;
-  background-color: white;
+  height: 150px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 20px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 0 18px 20px 17.5px;
+    border-color: #ffffff transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -20px;
+    left: 100px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 0 18px 20px 17.5px;
+    border-color: rgba(0, 0, 0, 1) transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    top: -20px;
+    left: 100px;
+  }
+
   li {
     width: 200px;
     height: 50px;
