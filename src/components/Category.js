@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import Star from "./Star";
 
 const Container = styled.div`
   width: 264px;
@@ -8,6 +9,7 @@ const Container = styled.div`
   grid-template-rows: 210px 54px;
 `;
 const ImageContainer = styled.div`
+  position: relative;
   grid-column: span 2;
   img {
     width: 264px;
@@ -27,6 +29,7 @@ function Category({ category }) {
     <Container>
       <ImageContainer>
         <img src={category.image_url} alt={category.title} />
+        <Star />
       </ImageContainer>
       <DescContainer>
         <span># {category.title}</span>

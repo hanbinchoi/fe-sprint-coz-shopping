@@ -26,7 +26,7 @@ function Main() {
   const item = useRecoilValue(data);
   return (
     <Container>
-      <div>상품 리스트</div>
+      <ListTitle>상품 리스트</ListTitle>
       <ItemContainer>
         {item
           .slice(0, 4)
