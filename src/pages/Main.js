@@ -23,12 +23,9 @@ const ItemContainer = styled.div`
 `;
 
 function Main() {
-  const products = useRecoilValue(item);
-  console.log(products.filter((ele) => ele.type === "Brand"));
-  console.log(products);
   return (
     <Container>
-      <ListTitle>상품 리스트</ListTitle>
+      <div>상품 리스트</div>
       <ItemContainer>
         {products
           .slice(0, 4)
