@@ -4,7 +4,7 @@ const Container = styled.div`
   width: 264px;
   height: 264px;
   display: grid;
-  grid-template-columns: 214px 50px;
+  grid-template-columns: 187px 77px;
   grid-template-rows: 210px 54px;
 `;
 const ImageContainer = styled.div`
@@ -21,34 +21,25 @@ const DescContainer = styled.div`
   font-size: 16px;
   font-weight: 800;
   display: grid;
-  grid-template-columns: 214px 50px;
+  grid-template-columns: 264px;
   grid-template-rows: 24px 24px;
-  .discount {
-    color: #452cdd;
-  }
-
-  .price {
-    grid-column: span 2;
+  .sub-title {
     font-weight: 400;
-    text-align: right;
   }
 `;
 
-function Product({ product }) {
+function Exhibition({ exhibition }) {
   return (
     <Container>
       <ImageContainer>
-        <img src={product.image_url} alt={product.title} />
+        <img src={exhibition.image_url} alt={exhibition.title} />
       </ImageContainer>
       <DescContainer>
-        <span>{product.title}</span>
-        <span className="discount">
-          {product.discountPercentage ? `${product.discountPercentage}%` : null}{" "}
-        </span>
-        <span className="price">{product.price}원</span>
+        <span>{exhibition.title}</span>
+        <span className="sub-title">{exhibition.sub_title}</span>
       </DescContainer>
     </Container>
   );
 }
 
-export default Product;
+export default Exhibition;

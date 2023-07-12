@@ -4,7 +4,7 @@ const Container = styled.div`
   width: 264px;
   height: 264px;
   display: grid;
-  grid-template-columns: 214px 50px;
+  grid-template-columns: 187px 77px;
   grid-template-rows: 210px 54px;
 `;
 const ImageContainer = styled.div`
@@ -21,34 +21,32 @@ const DescContainer = styled.div`
   font-size: 16px;
   font-weight: 800;
   display: grid;
-  grid-template-columns: 214px 50px;
+  grid-template-columns: 187px 77px;
   grid-template-rows: 24px 24px;
-  .discount {
-    color: #452cdd;
+  .follower {
+    font-weight: 700;
   }
 
-  .price {
+  .followerNum {
     grid-column: span 2;
     font-weight: 400;
     text-align: right;
   }
 `;
 
-function Product({ product }) {
+function Brand({ brand }) {
   return (
     <Container>
       <ImageContainer>
-        <img src={product.image_url} alt={product.title} />
+        <img src={brand.brand_image_url} alt={brand.brand_name} />
       </ImageContainer>
       <DescContainer>
-        <span>{product.title}</span>
-        <span className="discount">
-          {product.discountPercentage ? `${product.discountPercentage}%` : null}{" "}
-        </span>
-        <span className="price">{product.price}원</span>
+        <span>{brand.brand_name}</span>
+        <span className="follower">관심고객수</span>
+        <span className="followerNum">{brand.follower}원</span>
       </DescContainer>
     </Container>
   );
 }
 
-export default Product;
+export default Brand;
