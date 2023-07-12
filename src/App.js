@@ -15,7 +15,10 @@ function App() {
         setDropDownView={setDropDownView}
       ></Header>
       <Routes>
-        <Route path="/" element={<Main />}></Route>
+        <Route
+          path="/"
+          element={<Main setDropDownView={setDropDownView} />}
+        ></Route>
         <Route path="/products/list" element={<ProductList />}></Route>
         <Route path="/bookmark" element={<Bookmark />}></Route>
       </Routes>

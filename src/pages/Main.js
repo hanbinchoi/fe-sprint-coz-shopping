@@ -3,7 +3,7 @@ import Product from "../components/Product";
 
 const Container = styled.div`
   padding: 24px 76px;
-  height: 640px;
+  height: 100%;
   div {
     size: 24px;
     font-weight: 600;
@@ -17,9 +17,9 @@ const ItemContainer = styled.div`
   gap: 24px;
 `;
 
-function Main() {
+function Main({ setDropDownView }) {
   return (
-    <Container>
+    <Container onClick={() => setDropDownView(false)}>
       <div>상품 리스트</div>
       <ItemContainer>
         <Product />
