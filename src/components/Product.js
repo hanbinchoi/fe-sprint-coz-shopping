@@ -25,6 +25,7 @@ const DescContainer = styled.div`
   grid-template-rows: 24px 24px;
   .discount {
     color: #452cdd;
+    text-align: right;
   }
 
   .price {
@@ -42,9 +43,7 @@ function Product({ product }) {
       </ImageContainer>
       <DescContainer>
         <span>{product.title}</span>
-        <span className="discount">
-          {product.discountPercentage ? `${product.discountPercentage}%` : null}{" "}
-        </span>
+        <span className="discount">{`${product.discountPercentage}%`}</span>
         <span className="price">{product.price}원</span>
       </DescContainer>
     </Container>
