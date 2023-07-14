@@ -1,31 +1,19 @@
-import { styled } from "styled-components";
 import Product from "../components/Product";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { bookmarkState, data } from "../components/atoms";
 import Brand from "../components/Brand";
 import Exhibition from "../components/Exhibition";
 import Category from "../components/Category";
 import { useEffect } from "react";
 import axios from "axios";
-
-const Container = styled.div`
-  padding: 24px 76px 12px 76px;
-`;
-
-const ListTitle = styled.div`
-  font-size: 24px;
-  font-weight: 600;
-`;
-
-const ItemContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 12px 0;
-`;
+import {
+  Container,
+  ListTitle,
+  ItemContainer,
+} from "../components/MainContainer";
 
 function Main() {
-  const [products, setProducts] = useRecoilState(data);
+  const setProducts = useSetRecoilState(data);
 
   useEffect(() => {
     axios
@@ -34,7 +22,6 @@ function Main() {
   }, []);
   const item = useRecoilValue(data);
   const bookmark = useRecoilValue(bookmarkState);
-  console.log(bookmark);
   return (
     <Container>
       <ListTitle>상품 리스트</ListTitle>
