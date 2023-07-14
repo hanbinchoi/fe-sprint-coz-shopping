@@ -1,5 +1,5 @@
 import { FaStar } from "react-icons/fa";
-import { Container } from "./StarContainer";
+import { Container } from "./container/StarContainer";
 
 function Star({ bookmark }) {
   return (

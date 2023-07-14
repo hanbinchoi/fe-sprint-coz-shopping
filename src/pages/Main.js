@@ -10,7 +10,7 @@ import {
   Container,
   ListTitle,
   ItemContainer,
-} from "../components/MainContainer";
+} from "../components/container/MainContainer";
 
 function Main() {
   console.log("Main!");

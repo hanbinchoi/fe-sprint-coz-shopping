@@ -5,8 +5,8 @@ import {
   Container,
   DescContainer,
   ImageContainer,
-} from "./ExhibitionContainer";
-import { StarContainer } from "./StarContainer";
+} from "./container/ExhibitionContainer";
+import { StarContainer } from "./container/StarContainer";
 import { useState } from "react";
 import Modal from "./Modal";
 
@@ -30,7 +30,7 @@ function Exhibition({ exhibition, handleBookmarkClick }) {
       <Container>
         <ImageContainer onClick={handleModal}>
           <img src={exhibition.image_url} alt={exhibition.title} />
-          <StarContainer onClick={() => handleBookmarkClick(exhibition)}>
+          <StarContainer onClick={(e) => handleBookmarkClick(e, exhibition)}>
             {bookmark.find((ele) => ele.id === exhibition.id) ? (
               <Star bookmark />
             ) : (

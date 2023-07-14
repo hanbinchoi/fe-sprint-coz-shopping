@@ -1,8 +1,12 @@
 import Star from "./Star";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState } from "./atoms";
-import { Container, ImageContainer, DescContainer } from "./BrandContainer";
-import { StarContainer } from "./StarContainer";
+import {
+  Container,
+  ImageContainer,
+  DescContainer,
+} from "./container/BrandContainer";
+import { StarContainer } from "./container/StarContainer";
 import { useState } from "react";
 import Modal from "./Modal";
 
@@ -26,9 +30,9 @@ function Brand({ brand, handleBookmarkClick }) {
       <Container>
         <ImageContainer onClick={handleModal}>
           <img src={brand.brand_image_url} alt={brand.brand_name} />
-          <StarContainer>
+          <StarContainer onClick={(e) => handleBookmarkClick(e, brand)}>
             {bookmark.find((ele) => ele.id === brand.id) ? (
-              <Star onClick={() => handleBookmarkClick(brand)} bookmark />
+              <Star bookmark />
             ) : (
               <Star />
             )}

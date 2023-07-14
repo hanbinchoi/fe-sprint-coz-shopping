@@ -4,9 +4,9 @@ import {
   ModalContainer,
   ModalTitle,
   ModalView,
-} from "./ModalContainer";
+} from "./container/ModalContainer";
 import Star from "./Star";
-import { ModalStarContainer, StarContainer } from "./StarContainer";
+import { ModalStarContainer, StarContainer } from "./container/StarContainer";
 import { bookmarkState } from "./atoms";
 
 function Modal({ item, img, title, setModalOpen, handleBookmarkClick }) {

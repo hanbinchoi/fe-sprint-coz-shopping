@@ -1,10 +1,14 @@
 import Star from "./Star";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState } from "./atoms";
-import { Container, ImageContainer, DescContainer } from "./ProductContainer";
+import {
+  Container,
+  ImageContainer,
+  DescContainer,
+} from "./container/ProductContainer";
 import { useState } from "react";
 import Modal from "./Modal";
-import { StarContainer } from "./StarContainer";
+import { StarContainer } from "./container/StarContainer";
 
 function Product({ product, handleBookmarkClick }) {
   const bookmark = useRecoilValue(bookmarkState);

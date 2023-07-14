@@ -1,7 +1,7 @@
 import logo from "../img/로고.png";
 import { BiMenu } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { Container, Logo, Menu } from "./HeaderContainer";
+import { Container, Logo, Menu } from "./container/HeaderContainer";
 import DropdownMenu from "./DropdownMenu";
 import { useState } from "react";
 
