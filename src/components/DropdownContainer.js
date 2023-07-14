@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const DropdownContainer = styled.ul`
+export const DropdownContainer = styled.ul`
   position: absolute;
   right: 50px;
   top: 70px;
@@ -52,5 +52,3 @@ const DropdownContainer = styled.ul`
     border-bottom: none;
   }
 `;
-
-export default DropdownContainer;
