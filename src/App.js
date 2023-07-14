@@ -7,14 +7,9 @@ import Bookmark from "./pages/Bookmark";
 import Footer from "./components/Footer";
 
 function App() {
-  const [isDropdownView, setDropDownView] = useState(false);
-
   return (
     <BrowserRouter>
-      <Header
-        isDropdownView={isDropdownView}
-        setDropDownView={setDropDownView}
-      ></Header>
+      <Header></Header>
       <Routes>
         <Route path="/" element={<Main />}>
           {" "}

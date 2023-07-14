@@ -1,9 +1,13 @@
 import logo from "../img/로고.png";
 import { BiMenu } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { Container, Logo, Menu, DropDownMenu } from "./HeaderContainer";
+import { Container, Logo, Menu } from "./HeaderContainer";
+import DropdownMenu from "./DropdownMenu";
+import { useState } from "react";
 
-function Header({ isDropdownView, setDropDownView }) {
+function Header() {
+  console.log("Header!");
+  const [isDropdownView, setDropDownView] = useState(false);
   const handleClickContainer = (e) => {
     e.stopPropagation();
     if (e.currentTarget.nodeName === "svg") setDropDownView(!isDropdownView);
@@ -22,17 +26,7 @@ function Header({ isDropdownView, setDropDownView }) {
 
       <Menu>
         <BiMenu onClick={handleClickContainer} />
-        {isDropdownView ? (
-          <DropDownMenu>
-            <li>최한빈님, 안녕하세요!</li>
-            <Link to="/products/list" style={{ textDecoration: "none" }}>
-              <li>상품리스트 페이지</li>
-            </Link>
-            <Link to="/bookmark" style={{ textDecoration: "none" }}>
-              <li>북마크 페이지</li>
-            </Link>
-          </DropDownMenu>
-        ) : null}
+        {isDropdownView ? <DropdownMenu /> : null}
       </Menu>
     </Container>
   );

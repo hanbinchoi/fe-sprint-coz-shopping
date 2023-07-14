@@ -13,6 +13,7 @@ import {
 } from "../components/MainContainer";
 
 function Main() {
+  console.log("Main!");
   const setProducts = useSetRecoilState(data);
 
   useEffect(() => {
