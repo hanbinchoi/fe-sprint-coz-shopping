@@ -11,13 +11,7 @@ import { data } from "./components/atoms";
 
 function App() {
   const [isDropdownView, setDropDownView] = useState(false);
-  const [products, setProducts] = useRecoilState(data);
 
-  useEffect(() => {
-    axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products")
-      .then((res) => setProducts(res.data));
-  }, []);
   return (
     <BrowserRouter>
       <Header
@@ -25,18 +19,15 @@ function App() {
         setDropDownView={setDropDownView}
       ></Header>
       <Routes>
-        <Route
-          path="/"
-          element={products.length !== 0 ? <Main /> : null}
-        ></Route>
-        <Route
-          path="/products/list"
-          element={products.length !== 0 ? <ProductList /> : null}
-        ></Route>
-        <Route
-          path="/bookmark"
-          element={products.length !== 0 ? <Bookmark /> : null}
-        ></Route>
+        <Route path="/" element={<Main />}>
+          {" "}
+        </Route>
+        <Route path="/products/list" element={<ProductList />}>
+          {" "}
+        </Route>
+        <Route path="/bookmark" element={<Bookmark />}>
+          {" "}
+        </Route>
       </Routes>
 
       <Footer />

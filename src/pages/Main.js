@@ -1,10 +1,12 @@
 import { styled } from "styled-components";
 import Product from "../components/Product";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState, data } from "../components/atoms";
 import Brand from "../components/Brand";
 import Exhibition from "../components/Exhibition";
 import Category from "../components/Category";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Container = styled.div`
   padding: 24px 76px 12px 76px;
@@ -23,6 +25,13 @@ const ItemContainer = styled.div`
 `;
 
 function Main() {
+  const [products, setProducts] = useRecoilState(data);
+
+  useEffect(() => {
+    axios
+      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=4")
+      .then((res) => setProducts(res.data));
+  }, []);
   const item = useRecoilValue(data);
   const bookmark = useRecoilValue(bookmarkState);
   const bookmarkItem = item.filter((ele) => bookmark.includes(ele.id));
@@ -30,19 +39,17 @@ function Main() {
     <Container>
       <ListTitle>상품 리스트</ListTitle>
       <ItemContainer>
-        {item
-          .slice(0, 4)
-          .map((ele) =>
-            ele.type === "Product" ? (
-              <Product key={ele.id} product={ele} />
-            ) : ele.type === "Brand" ? (
-              <Brand key={ele.id} brand={ele} />
-            ) : ele.type === "Exhibition" ? (
-              <Exhibition key={ele.id} exhibition={ele} />
-            ) : (
-              <Category key={ele.id} category={ele} />
-            )
-          )}
+        {item.map((ele) =>
+          ele.type === "Product" ? (
+            <Product key={ele.id} product={ele} />
+          ) : ele.type === "Brand" ? (
+            <Brand key={ele.id} brand={ele} />
+          ) : ele.type === "Exhibition" ? (
+            <Exhibition key={ele.id} exhibition={ele} />
+          ) : (
+            <Category key={ele.id} category={ele} />
+          )
+        )}
       </ItemContainer>
       <ListTitle>북마크 리스트</ListTitle>
       <ItemContainer>
