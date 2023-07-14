@@ -1,4 +1,7 @@
 import { styled } from "styled-components";
+import Star from "./Star";
+import { useRecoilState } from "recoil";
+import { bookmarkState } from "./atoms";
 
 const Container = styled.div`
   width: 264px;
@@ -8,6 +11,7 @@ const Container = styled.div`
   grid-template-rows: 210px 54px;
 `;
 const ImageContainer = styled.div`
+  position: relative;
   grid-column: span 2;
   img {
     width: 264px;
@@ -29,10 +33,23 @@ const DescContainer = styled.div`
 `;
 
 function Exhibition({ exhibition }) {
+  const [bookmark, setBookmark] = useRecoilState(bookmarkState);
+  const handleBookmarkClick = (id) => {
+    if (bookmark.find((ele) => ele === id))
+      setBookmark(bookmark.filter((ele) => ele !== id));
+    else setBookmark((prev) => [...prev, id]);
+  };
   return (
     <Container>
       <ImageContainer>
         <img src={exhibition.image_url} alt={exhibition.title} />
+        <div onClick={() => handleBookmarkClick(exhibition.id)}>
+          {bookmark.find((ele) => ele === exhibition.id) ? (
+            <Star bookmark />
+          ) : (
+            <Star />
+          )}
+        </div>
       </ImageContainer>
       <DescContainer>
         <span>{exhibition.title}</span>

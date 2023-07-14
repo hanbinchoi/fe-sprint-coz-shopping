@@ -38,6 +38,7 @@ function App() {
           element={products.length !== 0 ? <Bookmark /> : null}
         ></Route>
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );
