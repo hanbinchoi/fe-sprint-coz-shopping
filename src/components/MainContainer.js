@@ -12,8 +12,8 @@ export const ListTitle = styled.div`
 `;
 
 export const ItemContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   padding: 12px 0;
 `;
