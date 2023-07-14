@@ -1,36 +1,49 @@
 import Star from "./Star";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState } from "./atoms";
 import {
   Container,
   DescContainer,
   ImageContainer,
 } from "./ExhibitionContainer";
+import { StarContainer } from "./StarContainer";
+import { useState } from "react";
+import Modal from "./Modal";
 
-function Exhibition({ exhibition }) {
-  const [bookmark, setBookmark] = useRecoilState(bookmarkState);
-  const handleBookmarkClick = (exhibition) => {
-    if (bookmark.find((ele) => ele.id === exhibition.id))
-      setBookmark(bookmark.filter((ele) => ele.id !== exhibition.id));
-    else setBookmark((prev) => [...prev, exhibition]);
+function Exhibition({ exhibition, handleBookmarkClick }) {
+  const bookmark = useRecoilValue(bookmarkState);
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleModal = () => {
+    setModalOpen(!modalOpen);
   };
   return (
-    <Container>
-      <ImageContainer>
-        <img src={exhibition.image_url} alt={exhibition.title} />
-        <div onClick={() => handleBookmarkClick(exhibition)}>
-          {bookmark.find((ele) => ele.id === exhibition.id) ? (
-            <Star bookmark />
-          ) : (
-            <Star />
-          )}
-        </div>
-      </ImageContainer>
-      <DescContainer>
-        <span>{exhibition.title}</span>
-        <span className="sub-title">{exhibition.sub_title}</span>
-      </DescContainer>
-    </Container>
+    <>
+      {modalOpen ? (
+        <Modal
+          item={exhibition}
+          img={exhibition.image_url}
+          title={exhibition.title}
+          setModalOpen={setModalOpen}
+          handleBookmarkClick={handleBookmarkClick}
+        />
+      ) : null}
+      <Container>
+        <ImageContainer onClick={handleModal}>
+          <img src={exhibition.image_url} alt={exhibition.title} />
+          <StarContainer onClick={() => handleBookmarkClick(exhibition)}>
+            {bookmark.find((ele) => ele.id === exhibition.id) ? (
+              <Star bookmark />
+            ) : (
+              <Star />
+            )}
+          </StarContainer>
+        </ImageContainer>
+        <DescContainer>
+          <span>{exhibition.title}</span>
+          <span className="sub-title">{exhibition.sub_title}</span>
+        </DescContainer>
+      </Container>
+    </>
   );
 }
 

@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const ImageContainer = styled.div`
   position: relative;
   grid-column: span 2;
+  cursor: pointer;
   img {
     width: 264px;
     height: 210px;
