@@ -9,9 +9,11 @@ export const ListTitle = styled.div`
   font-weight: 600;
 `;
 
-export const ItemContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  padding: 12px 0;
+export const EmptyContainer = styled.div`
+  height: 234px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.5rem;
 `;

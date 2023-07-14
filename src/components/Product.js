@@ -1,5 +1,5 @@
 import Star from "./Star";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { bookmarkState } from "./atoms";
 import {
   Container,

@@ -1,16 +1,13 @@
-import Product from "../components/Product";
 import { useRecoilState } from "recoil";
 import { bookmarkState } from "../components/atoms";
-import Brand from "../components/Brand";
-import Exhibition from "../components/Exhibition";
-import Category from "../components/Category";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {
   Container,
+  EmptyContainer,
   ListTitle,
-  ItemContainer,
 } from "../components/container/MainContainer";
+import ItemContainer from "../components/container/ItemContainer";
 
 function Main() {
   console.log("Main!");
@@ -34,65 +31,24 @@ function Main() {
     <div>
       <Container>
         <ListTitle>상품 리스트</ListTitle>
-        <ItemContainer>
-          {item.map((ele) =>
-            ele.type === "Product" ? (
-              <Product
-                key={ele.id}
-                product={ele}
-                handleBookmarkClick={handleBookmarkClick}
-              />
-            ) : ele.type === "Brand" ? (
-              <Brand
-                key={ele.id}
-                brand={ele}
-                handleBookmarkClick={handleBookmarkClick}
-              />
-            ) : ele.type === "Exhibition" ? (
-              <Exhibition
-                key={ele.id}
-                exhibition={ele}
-                handleBookmarkClick={handleBookmarkClick}
-              />
-            ) : (
-              <Category
-                key={ele.id}
-                category={ele}
-                handleBookmarkClick={handleBookmarkClick}
-              />
-            )
-          )}
-        </ItemContainer>
+        {item.length === 0 ? (
+          <EmptyContainer>loading...</EmptyContainer>
+        ) : (
+          <ItemContainer
+            item={item}
+            handleBookmarkClick={handleBookmarkClick}
+          />
+        )}
+
         <ListTitle>북마크 리스트</ListTitle>
-        <ItemContainer>
-          {bookmark.length === 0
-            ? "아무것도 없어요😿"
-            : bookmark
-                .slice(0, 4)
-                .map((ele) =>
-                  ele.type === "Product" ? (
-                    <Product
-                      key={ele.id}
-                      product={ele}
-                      handleBookmarkClick={handleBookmarkClick}
-                    />
-                  ) : ele.type === "Brand" ? (
-                    <Brand key={ele.id} brand={ele} />
-                  ) : ele.type === "Exhibition" ? (
-                    <Exhibition
-                      key={ele.id}
-                      exhibition={ele}
-                      handleBookmarkClick={handleBookmarkClick}
-                    />
-                  ) : (
-                    <Category
-                      key={ele.id}
-                      category={ele}
-                      handleBookmarkClick={handleBookmarkClick}
-                    />
-                  )
-                )}
-        </ItemContainer>
+        {bookmark.length === 0 ? (
+          <EmptyContainer>북마크가 없습니다.</EmptyContainer>
+        ) : (
+          <ItemContainer
+            item={bookmark}
+            handleBookmarkClick={handleBookmarkClick}
+          />
+        )}
       </Container>
     </div>
   );
