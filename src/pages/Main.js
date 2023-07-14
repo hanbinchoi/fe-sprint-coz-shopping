@@ -1,10 +1,10 @@
 import Product from "../components/Product";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { bookmarkState, data } from "../components/atoms";
+import { useRecoilState } from "recoil";
+import { bookmarkState } from "../components/atoms";
 import Brand from "../components/Brand";
 import Exhibition from "../components/Exhibition";
 import Category from "../components/Category";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import {
   Container,
@@ -14,7 +14,7 @@ import {
 
 function Main() {
   console.log("Main!");
-  const setProducts = useSetRecoilState(data);
+  const [item, setProducts] = useState([]);
 
   const [bookmark, setBookmark] = useRecoilState(bookmarkState);
   useEffect(() => {
@@ -29,10 +29,9 @@ function Main() {
       setBookmark(bookmark.filter((ele) => ele.id !== item.id));
     else setBookmark((prev) => [...prev, item]);
   };
-  const item = useRecoilValue(data);
 
   return (
-    <>
+    <div>
       <Container>
         <ListTitle>상품 리스트</ListTitle>
         <ItemContainer>
@@ -95,7 +94,7 @@ function Main() {
                 )}
         </ItemContainer>
       </Container>
-    </>
+    </div>
   );
 }
 

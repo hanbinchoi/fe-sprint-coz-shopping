@@ -6,12 +6,17 @@ function DropdownMenu() {
   return (
     <DropdownContainer>
       <li>최한빈님, 안녕하세요!</li>
-      <Link to="/products/list" style={{ textDecoration: "none" }}>
-        <li>상품리스트 페이지</li>
-      </Link>
-      <Link to="/bookmark" style={{ textDecoration: "none" }}>
-        <li>북마크 페이지</li>
-      </Link>
+      <li>
+        {" "}
+        <Link to="/products/list" style={{ textDecoration: "none" }}>
+          상품리스트 페이지
+        </Link>
+      </li>
+      <li>
+        <Link to="/bookmark" style={{ textDecoration: "none" }}>
+          북마크 페이지
+        </Link>
+      </li>
     </DropdownContainer>
   );
 }

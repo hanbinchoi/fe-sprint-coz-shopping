@@ -10,7 +10,6 @@ export const DropdownContainer = styled.ul`
   width: 200px;
   height: 150px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
   &:after {
     content: "";
     position: absolute;
@@ -46,9 +45,13 @@ export const DropdownContainer = styled.ul`
     font-size: 16px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     color: #000000;
+    cursor: pointer;
   }
 
   li:last-child {
     border-bottom: none;
+  }
+  li:first-child {
+    cursor: default;
   }
 `;

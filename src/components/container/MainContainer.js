@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
   padding: 24px 76px 12px 76px;
-  position: relative;
 `;
 
 export const ListTitle = styled.div`
