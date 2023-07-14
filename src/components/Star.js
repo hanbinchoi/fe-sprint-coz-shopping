@@ -5,12 +5,12 @@ const Container = styled.div`
   bottom: 12px;
   right: 12px;
   font-size: 24px;
-  color: ${(props) => (props.bookmark ? "#FFD361" : "#DFDFDFCF")};
+  color: ${(props) => (props.bookmark === "true" ? "#FFD361" : "#DFDFDFCF")};
   cursor: pointer;
 `;
 function Star({ bookmark }) {
   return (
-    <Container bookmark={bookmark}>
+    <Container bookmark={"" + bookmark}>
       <FaStar />
     </Container>
   );

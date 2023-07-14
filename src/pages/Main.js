@@ -34,7 +34,7 @@ function Main() {
   }, []);
   const item = useRecoilValue(data);
   const bookmark = useRecoilValue(bookmarkState);
-  const bookmarkItem = item.filter((ele) => bookmark.includes(ele.id));
+  console.log(bookmark);
   return (
     <Container>
       <ListTitle>상품 리스트</ListTitle>
@@ -53,7 +53,7 @@ function Main() {
       </ItemContainer>
       <ListTitle>북마크 리스트</ListTitle>
       <ItemContainer>
-        {bookmarkItem
+        {bookmark
           .slice(0, 4)
           .map((ele) =>
             ele.type === "Product" ? (

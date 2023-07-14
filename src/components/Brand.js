@@ -40,17 +40,17 @@ const DescContainer = styled.div`
 
 function Brand({ brand }) {
   const [bookmark, setBookmark] = useRecoilState(bookmarkState);
-  const handleBookmarkClick = (id) => {
-    if (bookmark.find((ele) => ele === id))
-      setBookmark(bookmark.filter((ele) => ele !== id));
-    else setBookmark((prev) => [...prev, id]);
+  const handleBookmarkClick = (brand) => {
+    if (bookmark.find((ele) => ele.id === brand.id))
+      setBookmark(bookmark.filter((ele) => ele.id !== brand.id));
+    else setBookmark((prev) => [...prev, brand]);
   };
   return (
     <Container>
       <ImageContainer>
         <img src={brand.brand_image_url} alt={brand.brand_name} />
-        <div onClick={() => handleBookmarkClick(brand.id)}>
-          {bookmark.find((ele) => ele === brand.id) ? (
+        <div onClick={() => handleBookmarkClick(brand)}>
+          {bookmark.find((ele) => ele.id === brand.id) ? (
             <Star bookmark />
           ) : (
             <Star />
