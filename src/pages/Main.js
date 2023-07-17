@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { bookmarkState, itemState } from "../components/atoms";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import {
   Container,
@@ -8,7 +8,6 @@ import {
   ListTitle,
 } from "../components/container/MainContainer";
 import ItemContainer from "../components/container/ItemContainer";
-import { Item } from "../components/container/ProductListContainer";
 
 function Main() {
   console.log("Main!");
@@ -36,7 +35,6 @@ function Main() {
           <ItemContainer
             item={item}
             handleBookmarkClick={handleBookmarkClick}
-            page={"initial"}
           />
         )}
 
@@ -46,7 +44,6 @@ function Main() {
         ) : (
           <ItemContainer
             item={bookmark}
-            page={"initial"}
             handleBookmarkClick={handleBookmarkClick}
           />
         )}

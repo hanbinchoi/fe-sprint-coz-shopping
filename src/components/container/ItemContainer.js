@@ -17,45 +17,11 @@ function ItemContainer({ item, handleBookmarkClick, filterId }) {
   const [ref, inView] = useInView();
   const list = useRef(12);
   const [now, setNow] = useState(item.slice(0, Number(list.current)));
-
   useEffect(() => {
     if (now.length === 4) return;
     if (inView) {
       list.current += 12;
-      switch (filterId) {
-        case 0:
-          setNow(item.slice(0, list.current));
-          break;
-        case 1:
-          setNow(
-            item.filter((ele) => ele.type === "Product").slice(0, list.current)
-          );
-          break;
-        case 2:
-          setNow(
-            item.filter((ele) => ele.type === "Brand").slice(0, list.current)
-          );
-          break;
-        case 3:
-          setNow(
-            item
-              .filter((ele) => ele.type === "Exhibition")
-              .slice(0, list.current)
-          );
-          break;
-        case 4:
-          setNow(
-            item.filter((ele) => ele.type === "Category").slice(0, list.current)
-          );
-          break;
-        default:
-          setNow(item.slice(0, 4));
-      }
     }
-  }, [inView]);
-  useEffect(() => {
-    console.log(item);
-    list.current = 12;
     switch (filterId) {
       case 0:
         setNow(item.slice(0, list.current));
@@ -83,7 +49,7 @@ function ItemContainer({ item, handleBookmarkClick, filterId }) {
       default:
         setNow(item.slice(0, 4));
     }
-  }, [filterId, item]);
+  }, [inView, filterId, item]);
   return (
     <Container>
       {now.map((ele, idx) =>
