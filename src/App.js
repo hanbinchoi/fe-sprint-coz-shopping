@@ -2,8 +2,9 @@ import Header from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import ProductList from "./pages/ProductList";
-import Bookmark from "./pages/Bookmark";
+import BookmarkList from "./pages/BookmarkList";
 import Footer from "./components/Footer";
+import NotificationCenter from "./components/NotificationCenter";
 
 function App() {
   return (
@@ -16,11 +17,11 @@ function App() {
         <Route path="/products/list" element={<ProductList />}>
           {" "}
         </Route>
-        <Route path="/bookmark" element={<Bookmark />}>
+        <Route path="/bookmark" element={<BookmarkList />}>
           {" "}
         </Route>
       </Routes>
-
+      <NotificationCenter />
       <Footer />
     </BrowserRouter>
   );

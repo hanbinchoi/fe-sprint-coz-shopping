@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
   position: sticky;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,4 +22,5 @@ export const Logo = styled.div`
 export const Menu = styled.div`
   padding: 0 78px;
   font-size: 3rem;
+  cursor: pointer;
 `;

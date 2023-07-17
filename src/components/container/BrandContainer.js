@@ -27,6 +27,7 @@ export const DescContainer = styled.div`
   grid-template-rows: 24px 24px;
   .follower {
     font-weight: 700;
+    text-align: right;
   }
 
   .followerNum {

@@ -12,16 +12,11 @@ import exhibiImg from "../img/filter-exhibition.png";
 import productImg from "../img/filter-product.png";
 import ItemContainer from "../components/container/ItemContainer";
 import { useRecoilState } from "recoil";
-import { bookmarkState, itemState, notiState } from "../components/atoms";
+import { bookmarkState, notiState } from "../components/atoms";
 
 function ProductList() {
-  const [item, setItem] = useRecoilState(itemState);
+  const [item, setItem] = useRecoilState(bookmarkState);
   const [noti, setNoti] = useRecoilState(notiState);
-  useEffect(() => {
-    axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products")
-      .then((res) => setItem(res.data));
-  }, []);
   const [filterId, setFilterId] = useState(0);
   const imgArr = [allImg, productImg, categoryImg, exhibiImg, brandImg];
   const titleArr = ["전체", "상품", "카테고리", "기획전", "브랜드"];
@@ -56,9 +51,13 @@ function ProductList() {
   return (
     <ProductListContainer>
       <FilterContainer>
-        {titleArr.map((ele, idx) => (
-          <div key={idx} onClick={handleFilterClick} data-id={idx}>
-            <Filter img={imgArr[idx]} title={ele} focused={idx === filterId} />
+        {[0, 1, 2, 3, 4].map((ele) => (
+          <div key={ele} onClick={handleFilterClick} data-id={ele}>
+            <Filter
+              img={imgArr[ele]}
+              title={titleArr[ele]}
+              focused={ele === filterId}
+            />
           </div>
         ))}
       </FilterContainer>
