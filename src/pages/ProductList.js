@@ -56,13 +56,9 @@ function ProductList() {
   return (
     <ProductListContainer>
       <FilterContainer>
-        {[0, 1, 2, 3, 4].map((ele) => (
-          <div key={ele} onClick={handleFilterClick} data-id={ele}>
-            <Filter
-              img={imgArr[ele]}
-              title={titleArr[ele]}
-              focused={ele === filterId}
-            />
+        {titleArr.map((ele, idx) => (
+          <div key={idx} onClick={handleFilterClick} data-id={idx}>
+            <Filter img={imgArr[idx]} title={ele} focused={idx === filterId} />
           </div>
         ))}
       </FilterContainer>
