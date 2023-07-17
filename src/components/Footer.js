@@ -1,4 +1,4 @@
-import { Container } from "./FooterContainer";
+import { Container } from "./container/FooterContainer";
 
 function Footer() {
   return (
