@@ -12,21 +12,36 @@ import exhibiImg from "../img/filter-exhibition.png";
 import productImg from "../img/filter-product.png";
 import ItemContainer from "../components/container/ItemContainer";
 import { useRecoilState } from "recoil";
-import { bookmarkState } from "../components/atoms";
+import { bookmarkState, notiState } from "../components/atoms";
 
 function ProductList() {
   const [item, setItem] = useRecoilState(bookmarkState);
-  console.log(item);
+  const [noti, setNoti] = useRecoilState(notiState);
   const [filterId, setFilterId] = useState(0);
   const imgArr = [allImg, productImg, categoryImg, exhibiImg, brandImg];
   const titleArr = ["전체", "상품", "카테고리", "기획전", "브랜드"];
   const [bookmark, setBookmark] = useRecoilState(bookmarkState);
   const handleBookmarkClick = (e, item) => {
     e.stopPropagation();
-    if (bookmark.find((ele) => ele.id === item.id))
+    if (bookmark.find((ele) => ele.id === item.id)) {
       setBookmark(bookmark.filter((ele) => ele.id !== item.id));
-    else setBookmark((prev) => [...prev, item]);
+      setNoti((prev) => [
+        ...prev,
+        {
+          id: Math.random(),
+          title: item.brand_name ?? item.title,
+          flag: false,
+        },
+      ]);
+    } else {
+      setBookmark((prev) => [...prev, item]);
+      setNoti((prev) => [
+        ...prev,
+        { id: Math.random(), title: item.brand_name ?? item.title, flag: true },
+      ]);
+    }
   };
+
   const handleFilterClick = (e) => {
     e.stopPropagation();
     const id = Number(e.currentTarget.dataset.id);

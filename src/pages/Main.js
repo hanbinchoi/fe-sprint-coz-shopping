@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { bookmarkState, itemState } from "../components/atoms";
+import { bookmarkState, itemState, notiState } from "../components/atoms";
 import { useEffect } from "react";
 import axios from "axios";
 import {
@@ -13,6 +13,7 @@ function Main() {
   console.log("Main!");
   const [item, setItem] = useRecoilState(itemState);
   const [bookmark, setBookmark] = useRecoilState(bookmarkState);
+  const [noti, setNoti] = useRecoilState(notiState);
   useEffect(() => {
     axios
       .get("http://cozshopping.codestates-seb.link/api/v1/products?count")
@@ -20,9 +21,23 @@ function Main() {
   }, []);
   const handleBookmarkClick = (e, item) => {
     e.stopPropagation();
-    if (bookmark.find((ele) => ele.id === item.id))
+    if (bookmark.find((ele) => ele.id === item.id)) {
       setBookmark(bookmark.filter((ele) => ele.id !== item.id));
-    else setBookmark((prev) => [...prev, item]);
+      setNoti((prev) => [
+        ...prev,
+        {
+          id: Math.random(),
+          title: item.brand_name ?? item.title,
+          flag: false,
+        },
+      ]);
+    } else {
+      setBookmark((prev) => [...prev, item]);
+      setNoti((prev) => [
+        ...prev,
+        { id: Math.random(), title: item.brand_name ?? item.title, flag: true },
+      ]);
+    }
   };
 
   return (

@@ -13,3 +13,8 @@ export const itemState = atom({
   key: "item",
   default: [],
 });
+
+export const notiState = atom({
+  key: "noti",
+  default: [],
+});

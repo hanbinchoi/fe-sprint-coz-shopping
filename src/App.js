@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import ProductList from "./pages/ProductList";
 import BookmarkList from "./pages/BookmarkList";
 import Footer from "./components/Footer";
+import NotificationCenter from "./components/NotificationCenter";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           {" "}
         </Route>
       </Routes>
-
+      <NotificationCenter />
       <Footer />
     </BrowserRouter>
   );

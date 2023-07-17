@@ -14,6 +14,7 @@ export const Container = styled.div`
 `;
 
 function ItemContainer({ item, handleBookmarkClick, filterId }) {
+  console.log(item, filterId);
   const [ref, inView] = useInView();
   const list = useRef(12);
   const [now, setNow] = useState(item.slice(0, Number(list.current)));
