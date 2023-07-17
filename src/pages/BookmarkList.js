@@ -12,11 +12,11 @@ import exhibiImg from "../img/filter-exhibition.png";
 import productImg from "../img/filter-product.png";
 import ItemContainer from "../components/container/ItemContainer";
 import { useRecoilState } from "recoil";
-import { bookmarkState, itemState } from "../components/atoms";
+import { bookmarkState } from "../components/atoms";
 
 function ProductList() {
-  const [item, setItem] = useRecoilState(itemState);
-
+  const [item, setItem] = useRecoilState(bookmarkState);
+  console.log(item);
   const [filterId, setFilterId] = useState(0);
   const imgArr = [allImg, productImg, categoryImg, exhibiImg, brandImg];
   const titleArr = ["전체", "상품", "카테고리", "기획전", "브랜드"];

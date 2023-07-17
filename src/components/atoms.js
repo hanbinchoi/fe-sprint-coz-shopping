@@ -8,3 +8,8 @@ export const bookmarkState = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const itemState = atom({
+  key: "item",
+  default: [],
+});

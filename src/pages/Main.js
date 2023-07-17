@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { bookmarkState } from "../components/atoms";
+import { bookmarkState, itemState } from "../components/atoms";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -8,18 +8,17 @@ import {
   ListTitle,
 } from "../components/container/MainContainer";
 import ItemContainer from "../components/container/ItemContainer";
+import { Item } from "../components/container/ProductListContainer";
 
 function Main() {
   console.log("Main!");
-  const [item, setProducts] = useState([]);
-
+  const [item, setItem] = useRecoilState(itemState);
   const [bookmark, setBookmark] = useRecoilState(bookmarkState);
   useEffect(() => {
     axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=4")
-      .then((res) => setProducts(res.data));
+      .get("http://cozshopping.codestates-seb.link/api/v1/products?count")
+      .then((res) => setItem(res.data));
   }, []);
-
   const handleBookmarkClick = (e, item) => {
     e.stopPropagation();
     if (bookmark.find((ele) => ele.id === item.id))
@@ -37,6 +36,7 @@ function Main() {
           <ItemContainer
             item={item}
             handleBookmarkClick={handleBookmarkClick}
+            page={"initial"}
           />
         )}
 
@@ -46,6 +46,7 @@ function Main() {
         ) : (
           <ItemContainer
             item={bookmark}
+            page={"initial"}
             handleBookmarkClick={handleBookmarkClick}
           />
         )}
