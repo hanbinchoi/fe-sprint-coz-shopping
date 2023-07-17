@@ -16,7 +16,7 @@ function Main() {
   const [noti, setNoti] = useRecoilState(notiState);
   useEffect(() => {
     axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products?count")
+      .get("http://cozshopping.codestates-seb.link/api/v1/products?count=4")
       .then((res) => setItem(res.data));
   }, []);
   const handleBookmarkClick = (e, item) => {

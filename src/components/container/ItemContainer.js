@@ -12,6 +12,14 @@ export const Container = styled.div`
   gap: 24px;
   padding: 12px 0;
 `;
+export const NoData = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  font-size: 3rem;
+  text-align: center;
+`;
 
 function ItemContainer({ item, handleBookmarkClick, filterId }) {
   console.log(item, filterId);
@@ -19,7 +27,6 @@ function ItemContainer({ item, handleBookmarkClick, filterId }) {
   const list = useRef(12);
   const [now, setNow] = useState(item.slice(0, Number(list.current)));
   useEffect(() => {
-    if (now.length === 4) return;
     if (inView) {
       list.current += 12;
     }
@@ -52,36 +59,42 @@ function ItemContainer({ item, handleBookmarkClick, filterId }) {
     }
   }, [inView, filterId, item]);
   return (
-    <Container>
-      {now.map((ele, idx) =>
-        ele.type === "Product" ? (
-          <Product
-            key={ele.id}
-            product={ele}
-            handleBookmarkClick={handleBookmarkClick}
-          />
-        ) : ele.type === "Brand" ? (
-          <Brand
-            key={ele.id}
-            brand={ele}
-            handleBookmarkClick={handleBookmarkClick}
-          />
-        ) : ele.type === "Exhibition" ? (
-          <Exhibition
-            key={ele.id}
-            exhibition={ele}
-            handleBookmarkClick={handleBookmarkClick}
-          />
-        ) : (
-          <Category
-            key={ele.id}
-            category={ele}
-            handleBookmarkClick={handleBookmarkClick}
-          />
-        )
+    <>
+      {now.length === 0 ? (
+        <NoData>아무것도 없어요!</NoData>
+      ) : (
+        <Container>
+          {now.map((ele, idx) =>
+            ele.type === "Product" ? (
+              <Product
+                key={ele.id}
+                product={ele}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            ) : ele.type === "Brand" ? (
+              <Brand
+                key={ele.id}
+                brand={ele}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            ) : ele.type === "Exhibition" ? (
+              <Exhibition
+                key={ele.id}
+                exhibition={ele}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            ) : (
+              <Category
+                key={ele.id}
+                category={ele}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            )
+          )}
+          <div ref={ref}></div>
+        </Container>
       )}
-      <div ref={ref}></div>
-    </Container>
+    </>
   );
 }
 

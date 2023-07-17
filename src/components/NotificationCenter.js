@@ -13,7 +13,6 @@ const NotificationContainer = styled.div`
 
 function NotificationCenter() {
   const [noti, setNoti] = useRecoilState(notiState);
-  console.log(noti);
   return (
     <NotificationContainer>
       {noti.map((n) => (
